@@ -1,11 +1,12 @@
 
 from app import app, db 
-from app.models import Post, User
+from app.models import Post, User, Submit
 
 @app.shell_context_processor
 def make_shell_contextP():
     return {
         'db': db,
         'Post': Post,
-        'User': User
+        'User': User,
+        'Submit': Submit
     }

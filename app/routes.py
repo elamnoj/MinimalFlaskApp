@@ -1,6 +1,6 @@
 from app import app, db
 from flask import render_template, request, redirect, url_for, flash
-from app.models import Post, User
+from app.models import Post, User, Submit
 from flask_login import login_user, logout_user
 
 @app.route('/',methods=['GET', 'POST'])
@@ -16,8 +16,8 @@ def home():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        s = Submit(email='derek@codingtemple.com',
-                 body=request.form.get('body_text'))
+        s = Submit()
+        s.from_dict(request.form)
         db.session.add(s)
         db.session.commit()
         flash('Thank you for your submission!')
