@@ -1,0 +1,30 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <h4>Contact us for Help</h4>
+        <hr>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Issue regarding:</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Technical Help</option>
+                    <option>Customer Service</option>
+                    <option>General</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Explain your issue</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark btn-block">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
