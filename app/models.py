@@ -4,6 +4,24 @@ from flask_login import UserMixin
 from app import login_manager
 from werkzeug.security import check_password_hash, generate_password_hash
 
+class Submit(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String)
+    body = db.Column(db.Text)
+    created = db.Column(db.DateTime, default=dt.utcnow)
+
+    def to_dict(self):
+        return {
+            '_id': self.id,
+            'email': self.email,
+            'body': self.title,
+            'created': dt.strftime(self.created, '%m/%d/%Y')
+        }
+
+    def __repr__(self):
+        return f'<Post: [{self.email}]: {self.body[:20]}...>'
+
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String)

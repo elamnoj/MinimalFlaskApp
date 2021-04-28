@@ -5,7 +5,6 @@ from flask_login import login_user, logout_user
 
 @app.route('/',methods=['GET', 'POST'])
 def home():
-
     if request.method == 'POST':
         p = Post(email='derek@codingtemple.com', body=request.form.get('body_text'))
         db.session.add(p)
@@ -14,17 +13,24 @@ def home():
         return redirect(url_for('home'))
     return render_template('index.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        s = Submit(email='derek@codingtemple.com',
+                 body=request.form.get('body_text'))
+        db.session.add(s)
+        db.session.commit()
+        flash('Thank you for your submission!')
+        return redirect(url_for('home'))
     return render_template('contact.html')
 
-# @app.route('/blog')
-# def blog():
+@app.route('/blog')
+def blog():
     
-#     context = {
-#         'posts': [p.to_dict() for p in Post.query.all()]
-#     }
-#     return render_template('blog.html', **context)
+    context = {
+        'posts': [p.to_dict() for p in Post.query.all()]
+    }
+    return render_template('blog.html', **context)
 
 @app.route('/login', methods =['GET', 'POST'])
 def login():
