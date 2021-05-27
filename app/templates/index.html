@@ -1,19 +1,15 @@
 {% extends 'layout.html'%}
 
 {% block content %}
-    
+<div class="row">
+    <div class="col-6 offset-3">
     <h4>Home</h4>
     <hr />
-    <form class="form-inline" action="{{ url_for('home') }}" method="POST">
-        <div class="row">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <input name="body_text" class="form-control" type="text" placeholder="Your blog post here" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-info" type="submit">Post</button>
-            </div>
+        <div id=”chart” >
+            <!-- <iframe src="http://127.0.0.1:8050/" width=700 height=600></iframe> -->
         </div>
-    </form>
+    </div>
+</div>
+
+
 {% endblock content %}
